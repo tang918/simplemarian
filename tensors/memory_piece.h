@@ -1,3 +1,4 @@
+#pragma once
 #include "common/definitions.h"
 
 #include<iostream>

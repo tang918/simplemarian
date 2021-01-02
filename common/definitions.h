@@ -1,3 +1,4 @@
+#pragma once
 #include "common/intrusive_ptr.h"
 #include<functional>
 #include<iostream>

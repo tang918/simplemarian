@@ -147,11 +147,13 @@ private:
 public:
     Allocator(Ptr<Device>device,size_t bytes,size_t step,size_t alignment=256): 
     device_(device),available_(0),step_(step),alignment_(alignment){reserve(bytes);}
+        
 
     void reserve(size_t bytes) {
         bytes = alignedSize(bytes);
         if(bytes > 0)
             device_->reserve(bytes);
+
         clear();
     }
     void throwAtReallocation(bool throwRealloc) { throw_ = throwRealloc; }
@@ -169,7 +171,7 @@ public:
         return alloc(capacity<T>(num));
     }
 
-    //该方法将Gap和MemoryPiece联系起来
+    //该方法将Gap和MemoryPiece联系起来,申请分配内存调用该方法
     MemoryPiece::PtrType alloc(size_t bytes) {
         bytes = alignedSize(bytes);
         Gap gap = getGap(bytes);
