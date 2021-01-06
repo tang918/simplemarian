@@ -25,6 +25,11 @@ using Ptr = std::shared_ptr<T>;
 template <class T>
 using Weak = std::weak_ptr<T>;
 
+template <class T, typename... Args>
+Ptr<T> New(Args&&... args) {
+  return Ptr<T>(new T(std::forward<Args>(args)...));
+}
+
 template <class T>
 Ptr<T> New(Ptr<T> p) {
   return Ptr<T>(p);
@@ -40,4 +45,9 @@ IPtr<T> INew(Ptr<T> p) {
   return IPtr<T>(p);
 }
 
-}
+class TensorBase;
+typedef IPtr<TensorBase> Tensor;
+
+
+
+}//namespace marian

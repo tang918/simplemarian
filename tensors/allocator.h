@@ -1,5 +1,5 @@
 #pragma once
-
+#include<iostream>
 #include <cstdint>
 #include <deque>
 #include <memory>
@@ -221,6 +221,10 @@ public:
 
     size_t size() { return device_->size(); }
 
+
     size_t available() { return available_; }
+
+    size_t gapSize(){return gaps_.size();}
+    size_t alloctedSize(){return allocated_.size();}
 };
 }//namespace marian
